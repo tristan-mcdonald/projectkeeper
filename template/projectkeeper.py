@@ -595,8 +595,11 @@ def command_check(root, script):
         count = len(problems.messages)
         print(f"\n{count} problem{'s' if count != 1 else ''} found.", file=sys.stderr)
         return 1
+    name = display(root)
+    if name == ".":
+        name = Path.cwd().name
     print(
-        f"{display(root)} follows projectkeeper {SPEC_VERSION}: "
+        f"{name} follows projectkeeper {SPEC_VERSION}: "
         f"{len(items)} item{'s' if len(items) != 1 else ''}, "
         f"{decisions} decision{'s' if decisions != 1 else ''}."
     )
