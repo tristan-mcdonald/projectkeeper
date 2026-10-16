@@ -60,7 +60,11 @@ ACCEPTANCE_CRITERIA = re.compile(r"^#{2,6}\s+Acceptance criteria\s*$", re.IGNORE
 DECISION = re.compile(r"^(\d{4}-\d{2}-\d{2}|Standing): \S")
 ROW_LINK = re.compile(r"^\[(\d{3,})\]\(([^)]*)\)$")
 SEPARATOR = re.compile(r"^\|?\s*:?-+:?\s*(\|\s*:?-+:?\s*)*\|?$")
-INLINE_LINK = re.compile(r"\]\(\s*<?([^)\s>]+)>?(?:\s+[\"'(][^)]*)?\)")
+# A link's target may contain balanced brackets, as in src/app/(frontend)/page.tsx.
+INLINE_LINK = re.compile(
+    r"\]\(\s*(<[^>\n]*>|(?:[^()\s]|\([^()\s]*\))+)"
+    r"(?:\s+(?:\"[^\"]*\"|'[^']*'|\([^)]*\)))?\s*\)"
+)
 REFERENCE_LINK = re.compile(r"^ {0,3}\[[^\]]+\]:\s*<?([^\s>]+)>?")
 URL_SCHEME = re.compile(r"^[A-Za-z][A-Za-z0-9+.-]*:")
 
@@ -564,6 +568,7 @@ def check_links(root, problems):
             line = re.sub(r"(`+).*?\1", "", line)
             targets = INLINE_LINK.findall(line) + REFERENCE_LINK.findall(line)
             for target in targets:
+                target = target.strip("<>")
                 if URL_SCHEME.match(target) or target.startswith(("#", "/")):
                     continue
                 relative = url_unquote(re.split(r"[#?]", target, maxsplit=1)[0])

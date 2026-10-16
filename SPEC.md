@@ -259,13 +259,13 @@ then adds it to the index. Its `--status` may be `idea` (the default), `ready` o
 1. Copy the template into the project's `planning/` folder:
 
    ```sh
-   npx degit tristan-mcdonald/projectkeeper/template#v1.0.0 planning
+   npx degit tristan-mcdonald/projectkeeper/template#v1.0.1 planning
    ```
 
    Without Node, use git:
 
    ```sh
-   git clone --depth 1 --branch v1.0.0 https://github.com/tristan-mcdonald/projectkeeper.git /tmp/projectkeeper
+   git clone --depth 1 --branch v1.0.1 https://github.com/tristan-mcdonald/projectkeeper.git /tmp/projectkeeper
    cp -R /tmp/projectkeeper/template planning
    rm -rf /tmp/projectkeeper
    ```

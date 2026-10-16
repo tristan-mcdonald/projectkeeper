@@ -4,6 +4,13 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 [semantic versioning](https://semver.org/). The version is the version of the standard; the
 template and the checking script share it.
 
+## [1.0.1] - 2026-10-16
+
+### Fixed
+
+- The link check no longer reports links as broken when their target contains brackets, such as
+  Next.js route groups (`src/app/(frontend)/page.tsx`). Targets in angle brackets are handled too.
+
 ## [1.0.0] - 2026-10-16
 
 ### Added
@@ -14,4 +21,5 @@ template and the checking script share it.
 - `projectkeeper.py`, which checks a planning folder, rewrites the index tables from the items,
   and starts new items.
 
+[1.0.1]: https://github.com/tristan-mcdonald/projectkeeper/releases/tag/v1.0.1
 [1.0.0]: https://github.com/tristan-mcdonald/projectkeeper/releases/tag/v1.0.0

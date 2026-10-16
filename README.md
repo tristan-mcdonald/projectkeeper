@@ -32,7 +32,7 @@ logs, and Backlog.md for Markdown tasks in git, but projectkeeper differs in a f
 Copy the template into your project:
 
 ```sh
-npx degit tristan-mcdonald/projectkeeper/template#v1.0.0 planning
+npx degit tristan-mcdonald/projectkeeper/template#v1.0.1 planning
 ```
 
 Then add [the agent instructions](agents_snippet.md) to your `AGENTS.md` or `CLAUDE.md`, and work

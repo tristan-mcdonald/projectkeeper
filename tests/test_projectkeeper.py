@@ -305,6 +305,21 @@ class TestResearchAndLinks(PlanningFolder):
         self.assertProblem("the link to 002_other.md is broken")
         self.assertEqual(sum("is broken" in message for message in self.problems()), 1)
 
+    def test_link_targets_with_brackets(self):
+        (self.root.parent / "src/app/(frontend)").mkdir(parents=True)
+        (self.root.parent / "src/app/(frontend)/page.tsx").write_text("", encoding="utf-8")
+        body = (
+            "\n[page](../../src/app/(frontend)/page.tsx), [titled](../../src/app/(frontend)/page.tsx \"Page\")"
+            " and [angle](<../../src/app/(frontend)/page.tsx>).\n\n[gone](../../src/app/(backend)/page.tsx)\n"
+        )
+        self.write("items/002_x.md", item("002", "X", body=body))
+        self.fix()
+        self.assertEqual(
+            [message for message in self.problems()],
+            [f"{projectkeeper.display(self.root / 'items/002_x.md')}: line 12: the link to "
+             "../../src/app/(backend)/page.tsx is broken"],
+        )
+
     def test_links_in_code_and_urls_are_ignored(self):
         body = "\n`[a](missing.md)`\n\n```\n[b](missing.md)\n```\n\n[c](https://example.com) [d](#why)\n"
         self.write("items/002_x.md", item("002", "X", body=body))
