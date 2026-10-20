@@ -23,6 +23,7 @@ This folder follows [projectkeeper 1.0](../SPEC.md).
 | Item | Title |
 |------|-------|
 | [003](items/003_claude_code_skill.md) | A Claude Code skill or plugin |
+| [004](items/004_handing_over_unlanded_work.md) | Handing over work an agent can't land |
 
 ## Done
 

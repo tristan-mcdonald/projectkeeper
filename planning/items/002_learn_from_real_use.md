@@ -46,6 +46,21 @@ From moving the Lizzy's Pet Services board (a 1,100-line `TODO.md`) into project
   said were "left in place" had been deleted in a later commit, and the `git log` step found that
   work the board called uncommitted had been committed and pushed weeks before.
 
+From the Weredog engagement (a client project kept in an append-only log and a `TODO.md` of
+session briefs, not in projectkeeper), on 2026-10-20:
+
+- **Work an agent can't land needs a handover format.** The agent there never commits to the
+  client's repositories, so each piece of work goes over as numbered patches with their commit
+  messages and a checklist to apply, test, and commit them. Written up as
+  [004](004_handing_over_unlanded_work.md).
+- **`new` turns an apostrophe into a word break.** "Handing over work an agent can't land"
+  became `004_handing_over_work_an_agent_can_t_land.md`. The short name should drop apostrophes
+  rather than replace them with an underscore (`cant`), and could be shortened when the title is
+  long. The file was renamed by hand.
+- **The planning folder outside the repository again.** As with Lizzy's Pet Services, the notes
+  are candid client notes kept beside the code rather than in it, and the patches have to live
+  outside the repository for the same reason.
+
 ## Acceptance criteria
 
 - At least two projects have used projectkeeper for a few weeks each.
